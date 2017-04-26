@@ -10,7 +10,164 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/datepicker3.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
+<style>
+     #over{
+    width:100%;
+    height:100%;
+    opacity:0.8;
+    z-index:9;
+    top:0;
+    left:0;
+    position:fixed;
+    display:none;
+    background:#000;
+}
+     
+.button{
+    display: inline-block;
+    min-width: 25px;
+    text-align: center;
+    color: #444;
+    font-size: 12px;
+    font-weight: 700;
+    height: 35px;
+    padding: 0px 8px;
+    line-height: 36px;
+    border-radius: 4px;
+    transition: all 0.218s ease 0s;
+    border: 1px solid #808080;
+    background-color: #F5F5F5;
+    background-image: -moz-linear-gradient(center top , #F5F5F5, #F1F1F1);
+    cursor: pointer;
+}
+.button:hover{
+     border: 1px solid #DCDCDC;
+    text-decoration: none;
+    background-color:#DCDCDC;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+#insert-box{
+    background-color:#85B561;
+    height:auto;
+    width:450px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14px;
+    padding-bottom:5px;
+    display:none;
+    overflow:hidden;
+    position:absolute;
+    z-index:99999;
+    top:10%;
+    left:50%;
+    margin-left:-300px;
+}
+.features-table
+{
+width: 100%;
+margin: 0 auto;
+border-collapse: separate;
+border-spacing: 0;
+text-shadow: 0 1px 0 #fff;
+color: #2a2a2a;
+background: #fafafa;
+background-image: -moz-linear-gradient(top, #fff, #eaeaea, #fff); /* Firefox 3.6 */
+background-image: -webkit-gradient(linear,center bottom,center top,from(#fff),color-stop(0.5, #eaeaea),to(#fff));
+}
+ 
+.features-table td
+{
+height: 50px;
+line-height: 50px;
+padding: 0 20px;
+border-bottom: 1px solid #cdcdcd;
+box-shadow: 0 1px 0 white;
+-moz-box-shadow: 0 1px 0 white;
+-webkit-box-shadow: 0 1px 0 white;
+white-space: nowrap;
+text-align: center;
+}
 
+.features-table td:hover{
+    background-color:rgba(0,0,0,0.1);
+}
+ 
+/*Body*/
+.features-table tbody th{
+    text-align:center;
+    font: normal 16px Verdana, Arial, Helvetica;
+}
+
+.features-table tbody td
+{
+text-align: center;
+font: normal 12px Verdana, Arial, Helvetica;
+width: 150px;
+}
+
+.features-table tbody td:hover{
+    background-color:#DCDCDC;
+}
+ 
+.features-table tbody td:first-child
+{
+width: auto;
+text-align: left;
+}
+ 
+.features-table td:nth-child(2)
+{
+background: #efefef;
+background: rgba(144,144,144,0.15);
+border-right: 1px solid #cdcdcd;
+}
+
+.features-table td:nth-child(3)
+{
+background: #efefef;
+background: rgba(228, 192, 120, 0.15);
+border-right: 1px solid #cdcdcd;
+} 
+
+.features-table td:nth-child(4)
+{
+background: #e7f3d4;
+background: rgba(184,243,85,0.3);
+}
+ 
+/*Header*/
+.features-table thead td
+{
+font: bold 1.3em 'trebuchet MS', 'Lucida Sans', Arial;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-topleft: 10px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+border-top: 1px solid #eaeaea;
+}
+ 
+.features-table thead td:first-child
+{
+border-top: none;
+}
+ 
+/*Footer*/
+.features-table tfoot td
+{
+font: bold 1.4em Georgia;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+border-bottom: 1px solid #dadada;
+}
+ 
+.features-table tfoot td:first-child
+{
+border-bottom: none;
+}
+</style>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -52,7 +209,7 @@
 		</form>
 		<ul class="nav menu">
 			<li ><a id="index" href="index.aspx"><span class="glyphicon glyphicon-dashboard"></span> Điều khiển</a></li>
-			<li><a id="widget" href="widget.aspx"><span class="glyphicon glyphicon-th"></span> Tiện ích</a></li>
+			<li><a id="widget" href="widget.aspx"><span class="glyphicon glyphicon-map-marker"></span> Liên hệ</a></li>
 			<li><a id="charts" href="charts.aspx"><span class="glyphicon glyphicon-stats"></span> Biểu đồ</a></li>
 			<li class="parent ">
 				<a id="other" href="#">
@@ -75,7 +232,7 @@
 						</a>
 					</li>
 					<li>
-						<a class="" href="order.aspx">
+						<a class="" href="orders.aspx">
 							<span class="glyphicon glyphicon-share-alt"></span> Hóa đơn
 						</a>
 					</li>
@@ -125,7 +282,27 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
-	</script>	
+	</script>
+    
+     
+                        <script>
+                            $(document).ready(function () {
+                                $('a.insert-window').click(function () {                                   
+                                    var insertBox = $(this).attr('href')
+                                    $(insertBox).fadeIn(300);
+
+                                    $('body').append('<div id="over">');
+                                    $('#over').fadeIn(300);
+                                    return false;
+                                })
+                                $(document).on('click', '#over', function () {
+                                    $('#over, #insert-box').fadeOut(300, function () {
+                                        $('#over').remove();
+                                    });
+                                    return false;
+                                });
+                            });
+                        </script>
 </body>
 
 </html>

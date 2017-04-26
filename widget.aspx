@@ -118,61 +118,8 @@
 				</div>
 				
 				<div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><span class="glyphicon glyphicon-comment"></span> Chat</div>
-				
-					<div class="panel-body">
-						<ul>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
-								</div>
-							</li>
-							<li class="right clearfix">
-								<span class="chat-img pull-right">
-									<img src="http://placehold.it/80/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small>
-									</div>
-									<p>
-										Mauris dignissim porta enim, sed commodo sem blandit non. Ut scelerisque sapien eu mauris faucibus ultrices. Nulla ac odio nisl. Proin est metus, interdum scelerisque quam eu, eleifend pretium nunc. Suspendisse finibus auctor lectus, eu interdum sapien.
-									</p>
-								</div>
-							</li>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="panel-footer">
-						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Type your message here..." />
-							<span class="input-group-btn">
-								<button class="btn btn-success btn-md" id="btn-chat">Send</button>
-							</span>
-						</div>
-					</div>
-				</div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9282806119145!2d105.76310101468243!3d21.035555485994696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b92bd71f9b%3A0xb79f074fe43dcfc1!2zRlBUIFBvbHl0ZWNobmljIChDxqEgc-G7nyBIw6AgTuG7mWkp!5e0!3m2!1svi!2s!4v1492421022308" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
 				
 			</div><!--/.col-->
 			

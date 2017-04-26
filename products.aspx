@@ -1,38 +1,51 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/MasterPage.master" AutoEventWireup="false" CodeFile="products.aspx.vb" Inherits="products" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="products.aspx.cs" Inherits="tables" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <form id="form1" runat="server">
      <style>
         #tables{
             color: #fff;
             background-color: #30a5ff;
-        }
+        }       
+
+#insert-box{
+    background-color:#30a5ff;
+    width:30%;
+    display:none;
+    overflow:hidden;
+    position:absolute;
+    top:10%;
+    left:50%;
+    z-index:99;
+}
     </style>
     <div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li class="active">Tables</li>
+				<li class="active">Dữu liệu</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Tables</h1>
 			</div>
-		</div><!--/.row-->
-				
-		
-		<div class="row">
+		</div><div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Advanced Table</div>
+                    <div class="panel-heading">Sản phẩm</div>
 					<div class="panel-body">
-						<asp:GridView BorderColor="#CC9966" Width="839px" ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="MaSP" DataSourceID="SqlDataSource1" BackColor="White" BorderStyle="None" BorderWidth="1px" >
+
+                     
+                        <br />
+                        <asp:GridView CssClass="features-table" ID="GridView1" runat="server" Width="80%" AutoGenerateColumns="False" DataKeyNames="MaSP" DataSourceID="SqlDataSource2" AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                             <Columns>
                                 <asp:BoundField DataField="MaSP" HeaderText="MaSP" InsertVisible="False" ReadOnly="True" SortExpression="MaSP" />
                                 <asp:BoundField DataField="MaDanhMuc" HeaderText="MaDanhMuc" SortExpression="MaDanhMuc" />
                                 <asp:BoundField DataField="TenSP" HeaderText="TenSP" SortExpression="TenSP" />
                                 <asp:BoundField DataField="Gia" HeaderText="Gia" SortExpression="Gia" />
                                 <asp:BoundField DataField="MoTa" HeaderText="MoTa" SortExpression="MoTa" />
+                                <asp:BoundField DataField="HinhAnh" HeaderText="HinhAnh" SortExpression="HinhAnh" />
+                                <asp:CommandField ButtonType="Button" ControlStyle-CssClass="button" ShowDeleteButton="True" ShowEditButton="True" />
                             </Columns>
                             <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
@@ -42,9 +55,9 @@
                             <SortedAscendingCellStyle BackColor="#FEFCEB" />
                             <SortedAscendingHeaderStyle BackColor="#AF0101" />
                             <SortedDescendingCellStyle BackColor="#F6F0C0" />
-                            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                            <SortedDescendingHeaderStyle BackColor="#7E0000" />                            
                         </asp:GridView>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [SanPham] WHERE [MaSP] = @MaSP" InsertCommand="INSERT INTO [SanPham] ([MaDanhMuc], [TenSP], [Gia], [MoTa], [HinhAnh]) VALUES (@MaDanhMuc, @TenSP, @Gia, @MoTa, @HinhAnh)" SelectCommand="SELECT [MaSP], [MaDanhMuc], [TenSP], [Gia], [MoTa], [HinhAnh] FROM [SanPham]" UpdateCommand="UPDATE [SanPham] SET [MaDanhMuc] = @MaDanhMuc, [TenSP] = @TenSP, [Gia] = @Gia, [MoTa] = @MoTa, [HinhAnh] = @HinhAnh WHERE [MaSP] = @MaSP">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:inf205ConnectionString2 %>" DeleteCommand="DELETE FROM [SanPham] WHERE [MaSP] = @MaSP" InsertCommand="INSERT INTO [SanPham] ([MaDanhMuc], [TenSP], [Gia], [MoTa], [HinhAnh]) VALUES (@MaDanhMuc, @TenSP, @Gia, @MoTa, @HinhAnh)" SelectCommand="SELECT [MaSP], [MaDanhMuc], [TenSP], [Gia], [MoTa], [HinhAnh] FROM [SanPham]" UpdateCommand="UPDATE [SanPham] SET [MaDanhMuc] = @MaDanhMuc, [TenSP] = @TenSP, [Gia] = @Gia, [MoTa] = @MoTa, [HinhAnh] = @HinhAnh WHERE [MaSP] = @MaSP">
                             <DeleteParameters>
                                 <asp:Parameter Name="MaSP" Type="Int32" />
                             </DeleteParameters>
@@ -53,72 +66,19 @@
                                 <asp:Parameter Name="TenSP" Type="String" />
                                 <asp:Parameter Name="Gia" Type="Decimal" />
                                 <asp:Parameter Name="MoTa" Type="String" />
-                                <asp:Parameter Name="HinhAnh" Type="Object" />
+                                <asp:Parameter Name="HinhAnh" Type="String" />
                             </InsertParameters>
                             <UpdateParameters>
                                 <asp:Parameter Name="MaDanhMuc" Type="Int32" />
                                 <asp:Parameter Name="TenSP" Type="String" />
                                 <asp:Parameter Name="Gia" Type="Decimal" />
                                 <asp:Parameter Name="MoTa" Type="String" />
-                                <asp:Parameter Name="HinhAnh" Type="Object" />
+                                <asp:Parameter Name="HinhAnh" Type="String" />
                                 <asp:Parameter Name="MaSP" Type="Int32" />
                             </UpdateParameters>
-                        </asp:SqlDataSource>
-
-                        <script>
-                            $(document).ready(function () {
-                                $('a.login-window').click(function () {
-                                    //lấy giá trị thuộc tính href - chính là phần tử "#login-box"
-                                    var loginBox = $(this).attr('href');
-
-                                    //cho hiện hộp đăng nhập trong 300ms
-                                    $(loginBox).fadeIn(300);
-
-                                    // thêm phần tử id="over" vào sau body
-                                    $('body').append('<div id="over">');
-                                    $('#over').fadeIn(300);
-
-                                    return false;
-                                });
-
-                                // khi click đóng hộp thoại
-                                $(document).on('click', "a.close, #over", function () {
-                                    $('#over, .login').fadeOut(300, function () {
-                                        $('#over').remove();
-                                    });
-                                    return false;
-                                });
-                            });
-                        </script>
-                        </br></br>
-                        <table>
-                            <tr>
-                                <td>Họ:</td>
-                                <td><asp:TextBox ID="TextBox7" runat="server"></asp:TextBox></td>
-                            </tr>
-                             <tr>
-                                <td>Tên:</td>
-                                <td><asp:TextBox ID="TextBox8" runat="server"></asp:TextBox></td>
-                            </tr>
-                             <tr>
-                                <td>Email:</td>
-                                <td><asp:TextBox ID="TextBox9" runat="server"></asp:TextBox></td>
-                            </tr>
-                             <tr>
-                                <td>Địa chỉ:</td>
-                                <td><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox></td>
-                            </tr>
-                             <tr>
-                                <td>SĐT:</td>
-                                <td><asp:TextBox ID="TextBox11" runat="server"></asp:TextBox></td>
-                            </tr>
-                              <tr>                                
-                                <td colspan="2">
-                                    <asp:Button ID="Button1" runat="server" Text="Thêm" /></td>
-                            </tr>
-                        </table>
-                       
-                       
+                        </asp:SqlDataSource>   
+                        <a class="insert-window" href="#insert-box"><button class="button">ADD</button>
+                            </a>
                         
 					</div>
 				</div>
@@ -126,5 +86,46 @@
 		</div><!--/.row-->	
 		<div class="row">
 		</div><!--/.row-->	
+
+          
+                        <div id="insert-box">                            
+                            <h3 style="text-align:center; color:#fff; font-weight:bold;">THÊM NGƯỜI DÙNG </h3>                            
+                        <table class="features-table">
+                            <tr>
+                                <td>Mã danh mục:</td>  
+                                
+                                <td>
+                                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>Tên sản phẩm:</td>
+                                <td><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>Giá:</td>
+                                <td><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></td>
+                            </tr>
+                             <tr>
+                                <td>Mô tả:</td>
+                                <td><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>Hình ảnh:</td>
+                                <td><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td><button class="button" id="close">Đóng</button></td>
+                                <td>
+                                    <asp:Button CssClass="button" ID="Button1" runat="server" Text="Thêm" OnClick="Button1_Click" />
+                                </td>
+                                
+                            </tr>
+                        </table>
+                        <br />
+                        
+                        </div>
      </form>
+
+    
 </asp:Content>
+
