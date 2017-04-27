@@ -48,7 +48,7 @@
                                 <asp:CommandField ControlStyle-CssClass="button" ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
                             </Columns>
                             <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
+                            <HeaderStyle BackColor="#070099" Font-Bold="True" ForeColor="#FFFFCC" />
                             <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
                             <RowStyle BackColor="White" ForeColor="#330099" />
                             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
